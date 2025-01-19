@@ -6,7 +6,7 @@
 - 👀 I’m interested in music## 
 -Musical Invention is a collaborative platform where we experiment with different genres, instruments, and production techniques. Our goal is to push the boundaries of music and create unique sounds that resonate with listeners.
 
-- 🌱 I’m currently learning ...
+- 🌱 I’m currently learning ...to code
 - 💞️ I’m looking to collaborate on us
 
 - Features
