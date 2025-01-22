@@ -1,0 +1,59 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+# For this example, let's assume we have a CSV file named 'sales_data.csv'
+def analyze_sales_data(file_path):
+    try:
+        # Read the CSV file
+        df = pd.read_csv(file_path)
+        
+        # Display basic information about the dataset
+        print("\n=== Dataset Info ===")
+        print(df.info())
+        
+        # Show first few rows
+        print("\n=== First 5 Rows of Data ===")
+        print(df.head())
+        
+        # Basic statistics
+        print("\n=== Statistical Summary ===")
+        print(df.describe())
+        
+        # Check for missing values
+        print("\n=== Missing Values ===")
+        print(df.isnull().sum())
+        
+        # Example data cleaning
+        # Remove rows with missing values
+        df_cleaned = df.dropna()
+        
+        # Example analysis: If we have a 'sales' column
+        if 'sales' in df.columns:
+            # Monthly sales trend
+            plt.figure(figsize=(10, 6))
+            df_cleaned.groupby('month')['sales'].mean().plot(kind='bar')
+            plt.title('Average Monthly Sales')
+            plt.xlabel('Month')
+            plt.ylabel('Sales')
+            plt.show()
+            
+            # Create a box plot
+            plt.figure(figsize=(10, 6))
+            sns.boxplot(data=df_cleaned, y='sales')
+            plt.title('Sales Distribution')
+            plt.show()
+            
+        return df_cleaned
+        
+    except FileNotFoundError:
+        print("Error: File not found. Please check the file path.")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+# Usage example
+if __name__ == "__main__":
+    # Replace with your actual file path
+    file_path = "sales_data.csv"
+    analyzed_data = analyze_sales_data(file_path)
